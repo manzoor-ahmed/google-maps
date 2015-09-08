@@ -16,7 +16,17 @@ return [
     
     'key'       => 'ADD YOUR SERVICE KEY HERE',
         
+    /*
+      |--------------------------------------------------------------------------
+      | Verify SSL Peer
+      |--------------------------------------------------------------------------
+      |
+      | Will be used for all web services to verify 
+      | SSL peer (SSL certificate validation)
+      |
+     */
 
+    'ssl_verify_peer' => FALSE,
     /*
     |--------------------------------------------------------------------------
     | Service URL

@@ -337,6 +337,9 @@ class GoogleMaps{
                          ? config('googlemaps.key')
                          : $this->service['key'];   
             
+            // is ssl_verify_peer key set, use it, otherwise use default key
+        $this->verifySSL = empty(config('googlemaps.ssl_verify_peer')) ? FALSE:config('googlemaps.ssl_verify_peer');
+            
             // set service url
             $this->requestUrl = $this->service['url'];
     }
@@ -394,7 +397,7 @@ class GoogleMaps{
         curl_setopt($ch,CURLOPT_POST, 1);
         curl_setopt($ch,CURLOPT_POSTFIELDS, $isPost );       
        }
-       
+       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->verifySSL);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  
       curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
